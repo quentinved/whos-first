@@ -1,0 +1,13 @@
+# Two pages, no database, nothing to keep up. App Store Connect refuses a listing without
+# a privacy policy URL and a support URL, so they live here rather than behind another
+# account somewhere.
+#
+# First deploy:
+#   wrangler deploy
+#
+# Then paste the two URLs into App Store Connect:
+#   https://whos-first.quentin-vedrenne.workers.dev/privacy
+#   https://whos-first.quentin-vedrenne.workers.dev/support
+name = "whos-first"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
