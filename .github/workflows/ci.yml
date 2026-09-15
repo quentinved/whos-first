@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# The app target uses Swift 6 language mode with main-actor default isolation, which
+# needs the Xcode 26 toolchain. macos-26 runners ship it as the default.
+jobs:
+  core:
+    name: Core package tests
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path Packages/FingrCore
+
+  app:
+    name: App build
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          xcodebuild -project Fingr.xcodeproj -scheme Fingr \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO -quiet build

@@ -59,7 +59,8 @@ final class ScreenshotTests: XCTestCase {
             reveal(element, in: app)
             XCTAssertTrue(element.waitForExistence(timeout: 5), "\(identifier) never appeared")
             element.tap()
-            let selected = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isSelected == true"), object: element)
+            let selected = XCTNSPredicateExpectation(predicate: NSPredicate(format: "isSelected == true"),
+                                                     object: element)
             if XCTWaiter.wait(for: [selected], timeout: 3) == .completed { return }
         }
         XCTFail("\(identifier) never became selected")

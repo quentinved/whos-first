@@ -1,6 +1,15 @@
 # Who's First
 
+[![CI](https://github.com/quentinved/whos-first/actions/workflows/ci.yml/badge.svg)](https://github.com/quentinved/whos-first/actions/workflows/ci.yml)
+[![App Store](https://img.shields.io/badge/App%20Store-Who's%20First-blue)](https://apps.apple.com/app/id6811686319)
+
 Touch. Hold. Find out.
+
+<p align="center">
+  <img src="Artwork/README/01-Countdown.png" width="230" alt="Six fingers on the board during the countdown">
+  <img src="Artwork/README/02-Winner.png" width="230" alt="One player picked out of six">
+  <img src="Artwork/README/03-Teams.png" width="230" alt="Six players split into two teams">
+</p>
 
 A finger picker and team maker for iPhone and iPad. Everyone holds one finger on the
 screen; after a short countdown the app picks one or more of them, or splits the group into
@@ -59,6 +68,7 @@ UIKit input     ──→ GameSession               Round, Finger, TouchPoint
 | `Tools` | App Store Connect scripts: listing, screenshots, Game Center achievements. |
 | `Server` | A two-page Cloudflare Worker for the privacy policy and support URLs. |
 | `scripts` | Generators for the app icon, achievement badges and the soundtrack. |
+| `.github/workflows` | CI: core package tests and a simulator build on every push. |
 
 `Round` holds the game rules and nothing else, so the draw, team balancing and player
 limits are tested with a deterministic random source and no simulator. `GameSession`

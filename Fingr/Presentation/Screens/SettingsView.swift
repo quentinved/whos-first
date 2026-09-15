@@ -56,12 +56,12 @@ struct SettingsView: View {
 
     private var gameSetup: some View {
         VStack(spacing: 13) {
-            GameModeControl(mode: Binding(get: { app.preferences.gameMode }, set: app.setGameMode),
+            GameModeControl(mode: Binding(get: { app.preferences.gameMode }, set: { app.setGameMode($0) }),
                             theme: theme, identifierPrefix: "settings.mode")
             if app.preferences.gameMode == .teams {
                 TeamModeInfo(theme: theme)
             } else {
-                WinnerCountControl(count: Binding(get: { app.preferences.winnerCount }, set: app.setWinnerCount),
+                WinnerCountControl(count: Binding(get: { app.preferences.winnerCount }, set: { app.setWinnerCount($0) }),
                                    theme: theme, identifierPrefix: "settings.winnerCount")
             }
             playerCount
@@ -177,11 +177,11 @@ struct SettingsView: View {
                     }
                 }
                 Rectangle().fill(theme.line).frame(height: 1)
-                Toggle(isOn: Binding(get: { app.preferences.hapticsEnabled }, set: app.setHaptics)) {
+                Toggle(isOn: Binding(get: { app.preferences.hapticsEnabled }, set: { app.setHaptics($0) })) {
                     Label("Haptics", systemImage: "waveform.path")
                 }
                 .accessibilityLabel("Haptics").accessibilityIdentifier("settings.haptics")
-                Toggle(isOn: Binding(get: { app.preferences.soundEnabled }, set: app.setSound)) {
+                Toggle(isOn: Binding(get: { app.preferences.soundEnabled }, set: { app.setSound($0) })) {
                     Label("Music & sound", systemImage: "music.note")
                 }
                 .accessibilityIdentifier("settings.sound")
